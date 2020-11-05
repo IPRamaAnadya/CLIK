@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+        overflow-x: hidden;
+        font-family: 'Lato', sans-serif;
+        color: #505962;
+        background: rgba(243, 243, 243, 0.6)!important;
+    }
+
+
+/* Navbar */
+
+    .navbar{
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: .9rem;
+        letter-spacing: .1rem;
+    }
+
+    .navbar-nav li{
+        padding-right: .7rem;
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
+        color: white;
+        padding-top: .8rem;
+    }
+
+    .navbar-dark .navbar-nav .nav-link#login {
+        color: yellow;
+        padding-top: .8rem;
+    }
+
+    .navbar-dark .navbar-nav .nav-link.active:hover{
+        color: greenyellow;
+        padding-top: .8rem;
+    }
+
+/* End Navbar */
+
+/* Carousel */
+    .carousel-item {
+            height: 100vh;
+        }
+
+    .carousel-caption {
+        position: absolute;
+        top: 38%;
+    }
+    .carousel-caption h1 {
+        font-size: 3.8rem;
+        font-weight: 700;
+        letter-spacing: .3rem;
+        text-transform: uppercase;
+    }
+/* End carousel */
+
+
+/* Main content */
+section {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+section .title{
+    margin-bottom: 30px;
+    text-transform: capitalize;
+}
+section .title h1 {
+    font-weight: 900;
+}
+
+section .tabel-paket {
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+}
+
+section .list-packet{
+    color: black;
+    background-color: #e7e7e7;
+    border-radius: 5px;
+    width: 100%;
+}
+
+footer {
+    background-color: black;
+    color: white;
+}
+
+
+/* Galeri */
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  & > [class^="col-"],
+  & > [class*=" col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
