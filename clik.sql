@@ -114,3 +114,138 @@ CREATE TABLE `user` (
   `user_password` varchar(255) NOT NULL,
   `user_level` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indeks untuk tabel `detail_user`
+--
+ALTER TABLE `detail_user`
+  ADD PRIMARY KEY (`duser_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indeks untuk tabel `kategori`
+--
+ALTER TABLE `kategori`
+  ADD PRIMARY KEY (`kategori_id`);
+
+--
+-- Indeks untuk tabel `lokasi`
+--
+ALTER TABLE `lokasi`
+  ADD PRIMARY KEY (`lokasi_id`);
+
+--
+-- Indeks untuk tabel `produk`
+--
+ALTER TABLE `produk`
+  ADD PRIMARY KEY (`produk_id`),
+  ADD KEY `kategori_id` (`kategori_id`),
+  ADD KEY `lokasi_id` (`lokasi_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indeks untuk tabel `produk_aktif`
+--
+ALTER TABLE `produk_aktif`
+  ADD PRIMARY KEY (`paktif_id`),
+  ADD KEY `produk_id` (`produk_id`);
+
+--
+-- Indeks untuk tabel `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD PRIMARY KEY (`transaksi_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `produk_id` (`produk_id`);
+
+--
+-- Indeks untuk tabel `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `detail_user`
+--
+ALTER TABLE `detail_user`
+  MODIFY `duser_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `kategori`
+--
+ALTER TABLE `kategori`
+  MODIFY `kategori_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `lokasi`
+--
+ALTER TABLE `lokasi`
+  MODIFY `lokasi_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `produk`
+--
+ALTER TABLE `produk`
+  MODIFY `produk_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `produk_aktif`
+--
+ALTER TABLE `produk_aktif`
+  MODIFY `paktif_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `transaksi`
+--
+ALTER TABLE `transaksi`
+  MODIFY `transaksi_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `user`
+--
+ALTER TABLE `user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `detail_user`
+--
+ALTER TABLE `detail_user`
+  ADD CONSTRAINT `detail_user_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Ketidakleluasaan untuk tabel `produk`
+--
+ALTER TABLE `produk`
+  ADD CONSTRAINT `produk_ibfk_1` FOREIGN KEY (`kategori_id`) REFERENCES `kategori` (`kategori_id`),
+  ADD CONSTRAINT `produk_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
+  ADD CONSTRAINT `produk_ibfk_3` FOREIGN KEY (`lokasi_id`) REFERENCES `lokasi` (`lokasi_id`),
+  ADD CONSTRAINT `produk_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Ketidakleluasaan untuk tabel `produk_aktif`
+--
+ALTER TABLE `produk_aktif`
+  ADD CONSTRAINT `produk_aktif_ibfk_1` FOREIGN KEY (`produk_id`) REFERENCES `produk` (`produk_id`);
+
+--
+-- Ketidakleluasaan untuk tabel `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
+  ADD CONSTRAINT `transaksi_ibfk_2` FOREIGN KEY (`produk_id`) REFERENCES `produk` (`produk_id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
