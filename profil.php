@@ -88,7 +88,15 @@ $level = $user['level'];
                         <img src="img\profile\<?php echo $user['foto']; ?>" class="mx-auto d-block photo-profile" alt="<?php echo $user['foto']; ?>">
                         <div class="text-center">
                             <h3 class="text-center"><?php echo $user['nama']; ?></h3>
-                            <small class="sText">member</small>
+                            <?php if ($user['level']=='1'): ?>
+                                <small class="sText">Admin</small>
+                            <?php endif ?>
+                            <?php if ($user['level']=='2'): ?>
+                                <small class="sText">Mitra</small>
+                            <?php endif ?>
+                            <?php if ($user['level']=='3'): ?>
+                                <small class="sText">Member</small>
+                            <?php endif ?>
                         </div>
                     </div>
                     <div class="col-md-12 button-profile float-right">
@@ -118,7 +126,16 @@ $level = $user['level'];
                                 </tr>
                                 <tr>
                                     <th scope="row">Status</th>
-                                    <td>Member</td>
+                                    <th scope="row">Status</th>
+                                    <?php if ($user['level']=='1'): ?>
+                                        <td>Admin</td>
+                                    <?php endif ?>
+                                    <?php if ($user['level']=='2'): ?>
+                                        <td>Mitra</td>
+                                    <?php endif ?>
+                                    <?php if ($user['level']=='3'): ?>
+                                        <td>Member</td>
+                                    <?php endif ?>
                                 </tr>
                                 <tr>
                                     <th scope="row">Email</th>
